@@ -29,7 +29,7 @@ if [ "$credenciales_validas" = true ]; then
 
     TELEGRAM_BOT_TOKEN="6449893333:AAETxliYNE93OjiBQH6gZo-HaaNaGaWZvx8"
     TELEGRAM_CHAT_ID="-4079704711"
-    MENSAJE="El usuario $USUARIO ha iniciado sesión. Adjunto la foto del usuario."
+    MENSAJE="El usuario $USUARIO ha iniciado sesión."
 
 
     TELEGRAM_API_URL="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto"

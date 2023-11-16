@@ -12,23 +12,47 @@ mostrarMenu() {
         2>&1 >/dev/tty
 }
 
-altoIdentifiquese.sh() {
-    ruta=$(dialog --inputbox "Ingrese la ruta:" 8 40 2>&1 >/dev/tty)
-    ./altoIdentifiquese.sh "$ruta"
+altoIdentifiquese() {
+    RUTA=$(dialog --inputbox "Ingrese la ruta:" 8 40 2>&1 >/dev/tty)
+
+    /home/frs/Laboratorio/ejercicio1/altoIdentifiquese.sh "$RUTA"
 }
 
-# Puedes definir funciones similares para los demás scripts...
+noNames() {
+    N=$(dialog --inputbox "Ingrese un numero:" 8 40 2>&1 >/dev/tty)
+    ../ejercicio2/noNames.sh "$N"
+}
 
-# Ciclo principal del menú
+login() {
+    USUARIO=$(dialog --inputbox "Ingrese el usuario:" 8 40 2>&1 >/dev/tty)
+    CONTRASENA=$(dialog --inputbox "Ingrese la contraseña:" 8 40 2>&1 >/dev/tty)
+    ../ejercicio3/login.sh "$USUARIO" "$CONTRASENA"
+}
+elLoboEsta() {
+    URL=$(dialog --inputbox "Ingrese la ruta:" 8 40 2>&1 >/dev/tty)
+    TOKEN=$(dialog --inputbox "Ingrese la cadena a buscar:" 8 40 2>&1 >/dev/tty)
+    ../ejercicio4/elLoboEsta.sh "$URL" "$TOKEN"
+}
+telegramElRegreso() {
+    USER=$(dialog --inputbox "Ingrese el usuario:" 8 40 2>&1 >/dev/tty)
+    PASS=$(dialog --inputbox "Ingrese la contraseña:" 8 40 2>&1 >/dev/tty)
+    ../ejercicio5/telegramElRegreso.sh "$USER" "$PASS"
+}
+
+
+
 while true; do
     seleccion=$(mostrarMenu)
 
     case $seleccion in
         1) altoIdentifiquese ;;
-        2) echo "Seleccionaste Script 2";;  # Reemplaza con la llamada al segundo script
-        3) echo "Seleccionaste Script 3";;  # Reemplaza con la llamada al tercer script
-        4) echo "Seleccionaste Script 4";;  # Reemplaza con la llamada al cuarto script
-        5) echo "Seleccionaste Script 5";;  # Reemplaza con la llamada al quinto script
-        *) break ;;  # Salir del bucle si se selecciona "Cancelar" o se cierra la ventana
+        2) noNames ;;
+        3) login ;;
+        4) elLoboEsta ;;
+        5) telegramElRegreso ;;
+        *) break ;;
+        
     esac
+    read -p "Presiona Enter para salir..."
+
 done

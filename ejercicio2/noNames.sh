@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -lt 1 ]; then
-    echo "Ingreso: $0, debe ingresar un numero Natural."
+    echo "Debe usar el script de la siguiente manera: $0 numero"
     exit 1
 fi
 
@@ -9,7 +9,7 @@ N=$1
 CSV="usuarios.csv"
 IMAGES_DIR="imagenes_Random_Users"
 
-mkdir -p "$IMAGES_DIR"
+mkdir -p "/home/frs/Laboratorio/ejercicio2/$IMAGES_DIR"
 allUsers=$(curl -s "https://randomuser.me/api/?results=$N")
 for i in $(seq 0 $(("$N"-1))); 
 do
@@ -23,7 +23,7 @@ do
     EMAIL=$(echo "$user" | jq -r .email)
     IMAGEN=$(echo "$user" | jq -r .picture.large)
     
-    echo "\"$GENERO\",\"$NOMBRE\",\"$APELLIDO\",\"$EMAIL\",\"$CIUDAD\",\"$USERNAME\",\"$PASSWORD\"" >> "$CSV"
+    echo "\"$GENERO\",\"$NOMBRE\",\"$APELLIDO\",\"$EMAIL\",\"$CIUDAD\",\"$USERNAME\",\"$PASSWORD\"" >> "/home/frs/Laboratorio/ejercicio2/$CSV"
 
-    curl -s -o "$IMAGES_DIR/$NOMBRE-$APELLIDO.jpg" "$IMAGEN"
+    curl -s -o "/home/frs/Laboratorio/ejercicio2/$IMAGES_DIR/$NOMBRE-$APELLIDO.jpg" "$IMAGEN"
 done
