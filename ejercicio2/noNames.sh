@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$#" -lt 1 ]; then
+if [ "$#" -ne 1 ]; then
     echo "Debe usar el script de la siguiente manera: $0 numero"
     exit 1
 fi

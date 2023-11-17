@@ -25,6 +25,7 @@ done < "$CSV"
 if [ "$credenciales_validas" = true ]; then
     NAME=$(echo "$NOMBRE" | tr -d '"')
     LASTNAME=$(echo "$APELLIDO" | tr -d '"')
+    
     IMAGEN="$IMAGES_DIR/$NAME-$LASTNAME.jpg"
 
     TELEGRAM_BOT_TOKEN="6449893333:AAETxliYNE93OjiBQH6gZo-HaaNaGaWZvx8"
