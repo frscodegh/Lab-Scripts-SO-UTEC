@@ -26,3 +26,4 @@ else
 fi
 
 
+#/home/frs/Laboratorio/ejercicio1

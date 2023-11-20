@@ -38,8 +38,13 @@ if [ "$credenciales_validas" = true ]; then
     curl -s -X POST "$TELEGRAM_API_URL" \
         -F "chat_id=$TELEGRAM_CHAT_ID" \
         -F "caption=$MENSAJE" \
-        -F "photo=@$IMAGEN"
+        -F "photo=@$IMAGEN" >/dev/null 2>&1
 
 else
     echo "Credenciales incorrectas."
+fi
+
+if [ $credenciales_validas = true ]; then
+    echo "Mensaje y foto enviadas correctamente."
+    exit 1
 fi

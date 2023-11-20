@@ -14,29 +14,46 @@ mostrarMenu() {
 
 altoIdentifiquese() {
     RUTA=$(dialog --inputbox "Ingrese la ruta:" 8 40 2>&1 >/dev/tty)
-
-    /home/frs/Laboratorio/ejercicio1/altoIdentifiquese.sh "$RUTA"
+    TEMP_FILE=$(mktemp)
+    /home/frs/Laboratorio/ejercicio1/altoIdentifiquese.sh "$RUTA" > "$TEMP_FILE" 2>&1
+    dialog --title "Resultado" --msgbox "$(cat $TEMP_FILE)" 10 40
+    rm -f "$TEMP_FILE"
 }
+
 
 noNames() {
-    N=$(dialog --inputbox "Ingrese un numero:" 8 40 2>&1 >/dev/tty)
-    ../ejercicio2/noNames.sh "$N"
+    N=$(dialog --inputbox "Ingrese un número:" 8 40 2>&1 >/dev/tty)
+    TEMP_FILE=$(mktemp)
+    ../ejercicio2/noNames.sh "$N" > "$TEMP_FILE" 2>&1
+    dialog --title "Resultado" --msgbox "$(cat $TEMP_FILE)" 10 40
+    rm -f "$TEMP_FILE"
 }
+
 
 login() {
     USUARIO=$(dialog --inputbox "Ingrese el usuario:" 8 40 2>&1 >/dev/tty)
     CONTRASENA=$(dialog --inputbox "Ingrese la contraseña:" 8 40 2>&1 >/dev/tty)
-    ../ejercicio3/login.sh "$USUARIO" "$CONTRASENA"
+    TEMP_FILE=$(mktemp)
+    ../ejercicio3/login.sh "$USUARIO" "$CONTRASENA" > "$TEMP_FILE" 2>&1
+    dialog --title "Resultado" --msgbox "$(cat $TEMP_FILE)" 10 40
+    rm -f "$TEMP_FILE"
 }
 elLoboEsta() {
     URL=$(dialog --inputbox "Ingrese la ruta:" 8 40 2>&1 >/dev/tty)
     TOKEN=$(dialog --inputbox "Ingrese la cadena a buscar:" 8 40 2>&1 >/dev/tty)
-    ../ejercicio4/elLoboEsta.sh "$URL" "$TOKEN"
+    TEMP_FILE=$(mktemp)
+    ../ejercicio4/elLoboEsta.sh "$URL" "$TOKEN" > "$TEMP_FILE" 2>&1
+    dialog --title "Resultado" --msgbox "$(cat $TEMP_FILE)" 10 40
+    rm -f "$TEMP_FILE"
 }
+
 telegramElRegreso() {
     USER=$(dialog --inputbox "Ingrese el usuario:" 8 40 2>&1 >/dev/tty)
     PASS=$(dialog --inputbox "Ingrese la contraseña:" 8 40 2>&1 >/dev/tty)
-    ../ejercicio5/telegramElRegreso.sh "$USER" "$PASS"
+    TEMP_FILE=$(mktemp)
+    /home/frs/Laboratorio/ejercicio5/telegramElRegreso.sh "$USER" "$PASS" > "$TEMP_FILE" 2>&1
+    dialog --title "Resultado" --msgbox "$(cat $TEMP_FILE)" 10 40
+    rm -f "$TEMP_FILE"
 }
 
 
@@ -53,6 +70,5 @@ while true; do
         *) break ;;
         
     esac
-    read -p "Presiona Enter para salir..."
 
 done

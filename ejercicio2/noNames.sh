@@ -27,3 +27,8 @@ do
 
     curl -s -o "/home/frs/Laboratorio/ejercicio2/$IMAGES_DIR/$NOMBRE-$APELLIDO.jpg" "$IMAGEN"
 done
+
+if [ $N -ne 0 ]; then
+    echo "Datos y foto de usuario guardadas correctamente."
+    exit 1
+fi
